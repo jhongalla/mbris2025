@@ -2,6 +2,7 @@ from datetime import date
 import datetime
 import pdfkit
 from flask import make_response,render_template
+import os
 
 
 class pdf:
@@ -9,7 +10,7 @@ class pdf:
             self.html=html
             self.size=size
             self.orientation=orientation
-            self.config=pdfkit.configuration(wkhtmltopdf='./static/wkhtmltopdf/bin/wkhtmltopdf.exe')
+            self.config=pdfkit.configuration(wkhtmltopdf=os.getcwd()+'/static/wkhtmltopdf/bin/wkhtmltopdf.exe')
         def report(self):
             options = {
             'page-size': self.size,
