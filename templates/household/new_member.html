@@ -1,0 +1,235 @@
+{%extends 'Household.html'%}
+{%block household%}
+<div class="container" style="overflow-y: scroll;height: 800;">
+Household Number : <strong style="color: teal;">{{h}}</strong> 
+<hr >
+  <H6>DEMOGRAPHIC CHARACTERISTICS</H6>
+<table class="table table-borderless table-sm" id="tblmember" >
+  <tr>
+    <td>SURNAME</td>
+    <td>FIRST NAME</td>
+    <td>MIDDLE NAME</td>
+    <td>EXT</td>
+    <td>RELATION TO HEAD</td>
+  </tr>
+  <tr>
+    <td><input type="text" class="form-control" id="surname"></td>
+    <td><input type="text" class="form-control" id="firstname"></td>
+    <td><input type="text" class="form-control" id="middlename"></td>
+    <td><input type="text" class="form-control" id="extname"></td>
+    <td><select name="" class="form-select" id="relationtohead">
+      <option value="">--SELECT--</option>
+      {%for i in l%}
+        <option value=i[0]>{{i[1]}}</option>
+      {%endfor%}
+    </select></td>
+  </tr>
+  <tr>
+      <td>SEX</td>
+      <td>BIRTHDAY</td>
+      <td>PLACE OF BIRTH</td>
+      <td>NATIONALITY</td>
+      <td>MARITAL STATUS</td>
+  </tr>
+  <tr>
+    <td>
+      <Select type="text" class="form-select" id="sex">
+        <option>MALE</option>
+        <option>FEMALE</option>
+      </Select>
+  </td>
+  <datalist id="n">
+    <option >FILIPINO</option>
+    <option >FOREIGNER</option>
+  </datalist>
+      <td><input type="date" class="form-control" id="birthday"></input></td>
+        <td><input type="text" class="form-control" id="palceofbirth"></input></td>
+          <td><input type="text" class="form-control" id="nationality" list='n'></input></td>
+            <td><Select type="text" class="form-select" id="maritalstatus">
+              {%for i in m%}
+                <option value="">{{i[1]}}</option>
+                {%endfor%}
+            </Select></td>
+
+  </tr>
+  <tr>
+    <td>RELIGION</td>
+    <td></td>
+    <td>ETHNICITY</td>
+    <td></td>
+
+    <td>OCCUPATION</td>
+  </tr>
+  <tr>
+      <td colspan="2">
+          <Select type="text" class="form-select" style="text-transform: uppercase;" id="religion">
+            {%for i in r%}
+              <option value="">{{i[1]}}</option>
+            {%endfor%}
+          </Select>
+      </td>
+            <td colspan="2">
+          <Select type="text" class="form-select" style="text-transform: uppercase;" id="ethnicity">
+            {%for i in e%}
+              <option value="">{{i[1]}}</option>
+            {%endfor%}
+          </Select>
+      </td>
+      <td><select class="form-select" id="occupation">
+        <option value="">STUDENT</option>
+      </select></td>
+  </tr>
+   <tr>
+      <td>
+        PhilSys Card No.
+      </td>
+      <td>
+        Contact Number
+      </td>
+      <td>Email Address</td>
+      <td>Prefered Sector</td>
+  </tr>
+  <tr>
+    <td><input type="text" class="form-control"></td>
+    <td><input type="text" class="form-control"></td>
+    <td><input type="email" class="form-control"></td>
+    <td><select name="" id="" class="form-select">
+      <option value="">--SELECT--</option>
+      <option>EMPLOYED</option>
+      <option>UNEMPLOYED</option>
+      <option>PWD</option>
+      <option>OFW</option>
+      <option>SOLO PARENT</option>
+      <option value="OSY">OUT OF SCHOOL YOUTH</option>
+      <option value="OSC">OUT OF SCHOOL CHILDREN</option>
+      <option>IP</option>
+    </select></td>
+  </tr>
+</table>
+
+<div>
+  <button class="btn btn-primary" id="demographicsave">Save</button>
+
+<script>
+  $('#demographicsave').click(function(){
+      $.ajax({
+        url:"{{url_for('hh.demographic_entry')}}",
+        type:"post",
+        success:function(res){
+          alert(res.msg)
+        }
+      })
+  })
+</script>
+</div>
+
+
+<hr>
+<H6>EDUCATION</H6>
+<table class="table table-borderless table-sm" id="tblmember">
+ <tr>
+  <td>Highest Level of Education <br>(For 5 yrs & Above)</td>
+  <td>Currently Enrolled</td>
+  <td>School Level</td>
+  <td>Place of School</td>
+ </tr>
+ <tr>
+  <td><select name="" id="" class="form-select"></select></td>
+  <td><select name="" id="" class="form-select"></select></td>
+  <td><select name="" id="" class="form-select"></select></td>
+  <td><input type="text" class="form-control"></td>
+ </tr>
+</table>
+<H6>ECONOMIC ACTIVITY</H6>
+<table class="table table-borderless table-sm" id="tblmember">
+  <tr>
+  <td>Monthly Income</td>
+  <td>Source of Income</td>
+  <td>Status of Work/Business</td>
+  <td>Place of Work/Business</td>
+  </tr>
+  <tr>
+    <td><input type="number" class="form-control"></td>
+    <td><select name="" id="" class="form-select"></select></td>
+    <td><select name="" id=""  class="form-select"></select></td>
+    <td><input type="text" class="form-control"></td>
+  </tr>
+</table>
+<div>
+  <button class="btn btn-primary">Save</button>
+</div>
+<hr>
+<H6>HEALTH INFORMATION</H6>
+<table class="table table-borderless table-sm" id="tblmember">
+<tr>
+  <td colspan="3"> <strong>For 0 to 11 Months Old</strong></td>
+</tr>
+<tr>
+    <td>Place of Delivery</td>
+    <td>Birth Attendant</td>
+    <td>Immunization</td>
+</tr>
+<tr>
+  <td><input type="text" class="form-control"></td>
+  <td><input type="text" class="form-control"></td>
+  <td><input type="text" class="form-control"></td>
+</tr>
+<tr>
+  <td colspan="3"><strong>For Women 10 to 54 Years</strong></td>
+</tr>
+<td>Family Planning (FP) Use</td>
+<td>Source of FP Method</td>
+<td>Intention to Use FP</td>
+<tr>
+  <td><input type="text" class="form-control"></td>
+  <td><select name="" id="" class="form-select"></select></td>
+  <td><input type="text" class="form-control"></td>
+</tr>
+<tr>
+  <td colspan="4"><strong>For All Household Members</strong></td>
+</tr>
+<tr>
+  <td>Health Insurance</td>
+  <td>Facility Visited</td>
+  <td>Reason for Visit in Health Facility</td>
+  <td>Disability</td>
+</tr>
+<tr>
+  <td><select name="" id="" class="form-select"></select></td>
+  <td><select name="" id="" class="form-select"></select></td>
+  <td><select name="" id="" class="form-select"></select></td>
+  <td><input type="text" class="form-control"></td>
+</tr>
+</table>
+<hr>
+<h6>SOCIO-CIVIC PARTICIPATION</h6>
+<table class="table table-borderless table-sm" id="tblmember">
+  <tr>
+    <td>Solo Parent</td>
+    <td>Registered Senior Citizen</td>
+    <td>Registered Voter</td>
+  </tr>
+  <tr>
+    <td><select name="" id="" class="form-select"></select></td>
+    <td><select name="" id="" class="form-select"></select></td>
+    <td><select name="" id="" class="form-select"></select></td>
+  </tr>
+</table>
+<hr>
+<h6>MIGRATION INFORMATION</h6>
+<table class="table table-borderless table-sm" id="tblmember">
+  <tr>
+    <td>Previous Residence Six Months Ago</td>
+    <td>Length of Stay in the Barangay</td>
+    <td>Type of Resident</td>
+  </tr>
+  <tr>
+    <td><input type="text" class="form-control"></td>
+    <td><input type="text" class="form-control"></td>
+    <td><input type="text" class="form-control"></td>
+  </tr>
+</table>
+
+</div>
+{%include 'members_details.html'%}
+{%endblock%}

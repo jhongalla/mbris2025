@@ -1,0 +1,41 @@
+{%extends 'Household.html'%}
+{%block household%}
+<table id="tbl_hh" class="table table-bordered table-sm table-hover ">
+<thead class="thead-dark">
+  <tr>
+    <th>Number</th>
+    <th>Barangay</th>
+    <th>Address</th>
+    <th colspan="2" style="text-align: center;">Coordinates</th>
+    <th style="text-align: center;">Actions</th>
+  </tr>
+</thead>
+<tbody>
+  {%for i in hh%}
+  <tr>
+    <td>{{i[0]}}</a></td>
+    <td>{{i[3]}}</td>
+    <td>{{i[4]}}</td>
+    <td>{{i[5]}}</td>
+    <td>{{i[6]}}</td>
+    <td style="text-align: center;">
+    <button class="btn btn-danger btn-sm">Del</button>
+    <a class="btn btn-primary btn-sm" href="{{url_for('hh.hh_member_new',hh=i[0],h=i[0])}}">Add Member</a>
+    <a class="btn btn-info btn-sm" href="{{url_for('hh.hh_mark',hh=i[0])}}" target="_blank">Location</a>
+    <a class="btn btn-info btn-sm" href="{{url_for('hhrpt.rbiforma')}}" target="_blank">Form A</a>
+  </td>
+  </tr>
+  {%endfor%}
+</tbody>
+</table>
+<script>
+  $('#tbl_hh').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        'colvis',
+        'excel',
+        'print'
+    ]
+  })
+</script>
+{%endblock%}

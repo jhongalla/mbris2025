@@ -1,0 +1,99 @@
+<div>
+<H6>RBI FORM A(Revised 2024)</H6>
+<H6 style="text-align: center;">RECORDS OF BARANGAY INHABITANTS BY HOUSEHOLD</H6>
+
+<table>
+    <tr>
+        <td>REGION</td>
+        <td style="border-bottom: 1px solid;">XII</td>
+    </tr>
+        <tr>
+        <td>PROVINCE</td>
+        <td style="border-bottom: 1px solid;">SULTAN KUDARAT</td>
+    </tr>
+        <tr>
+        <td>MUNICIPALITY</td>
+        <td style="border-bottom: 1px solid;">BAGUMBAYAN</td>
+    </tr>
+        <tr>
+        <td>BARANGAY</td>
+        <td style="border-bottom: 1px solid;"></td>
+    </tr>
+        <tr>
+        <td>HOUSEHOLD ADDRESS</td>
+        <td style="border-bottom: 1px solid;"></td>
+    </tr>
+        <tr>
+        <td>NO OF HOUSEHOLD MEMBERS</td>
+        <td style="border-bottom: 1px solid;"></td>
+    </tr>
+</table>
+<table id="tbl">
+    <thead style="background-color: rgb(96, 155, 96);">
+        <tr>
+        <th colspan="4">NAME</th>
+        <th rowspan="2">PLACE OF BIRTH</th>
+        <th rowspan="2">DATE OF BIRTH</th>
+        <th rowspan="2">AGE</th>
+        <th rowspan="2">SEX</th>
+        <th rowspan="2">CIVIL STATUS</th>
+        <th rowspan="2">CITIZENSHIP</th>
+        <th rowspan="2">OCCUPATION</th>
+        <th rowspan="2"></th>
+        </tr>
+        <tr>
+            <th>LAST NAME</th>
+            <th>FIRST NAME</th>
+            <th>MIDDLE NAME</th>
+            <th>EXT</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for i in rw%}
+        <tr>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            {%if i[4]%}
+                <td>{{i[4]}}</td>
+            {%else%}
+             <td></td>
+            {%endif%}
+            
+            {%if i[5]%}
+                <td>{{i[5]}}</td>
+            {%else%}
+            <td></td>
+            {%endif%}
+            <td>{{i[8]}}</td>
+            {%if i[7]%}
+            <td>{{i[7]}}</td>
+            {%else%}
+            <td></td>
+            {%endif%}
+
+            <td>{{i[6]}}</td>
+        </tr>
+        {%endfor%}
+
+    </tbody>
+
+</table>
+<table style="width: 100%;">
+    <tr>
+        <td>Prepared by</td>
+        <td>Certified Correct</td>
+        <td>Validated by</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+</div>
+
+<style>
+    *{font-family: arial;font-size: 12;}
+    #tbl,#tbl th, #tbl td, #tbl tr{border: 1px solid;border-collapse: collapse;}
+    #tbl{width: 100%;}
+</style>

@@ -1,0 +1,9 @@
+div{padding:10px}
+.div-row{padding: 0;margin: 0;}
+.form-control,.form-select{border-radius: 3px; border-color:lightgrey;font-size: smaller;}
+.btn{font-size: small;} 
+table{font-family:'tahoma';font-size: small;}
+.form-control, .form-select{box-shadow: inset 1px 2px 0px 0px gray;font-weight: bolder;
+    text-transform: uppercase;color: blue;}
+table .btn{margin:0;padding: 3px;font-size: smaller;}
+h6{color: teal;}

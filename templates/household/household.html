@@ -1,0 +1,24 @@
+{%extends 'index.html'%}
+{%block main%}
+<div style="display: grid;grid-template-columns: 1fr 5fr;">
+    <div style="border-right: 2px solid gray;height:1000px;">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('hh.new')}}">New Household</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('hh.hh_lst')}}">List</a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link" href="">Reports</a>
+            </li>
+
+        </ul>
+    </div>
+    <div style="box-shadow: 1px 2px 3px 3px gray;">
+        {%block household%}
+        {%endblock household%}
+    </div>
+</div>
+{%endblock main%}

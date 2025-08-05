@@ -1,0 +1,69 @@
+
+<h6>HOUSEHOLD DETAILS</h6>
+<table class="table table-bordered table-hover table-info">
+<thead class="thead-dark" style="text-align: center;">
+  <tr>
+    <th>NO</th>
+    <th>LAST NAME</th>
+    <th>FIRST NAME</th>
+    <th>MIDDLE NAME</th>
+    <th>EXT NAME</th>
+    <th>SEX</th>
+    <th>BIRTHDAY</th>
+    <th>TYPE</th>
+    <th>ACTIONS</th>
+  </tr>
+</thead>
+<tbody>
+  {%for i in hl%}
+  <tr>
+    <td style="text-align: center;">{{loop.index}}</td>
+    <td>{{i[1]}}</td>
+    <td>{{i[2]}}</td>
+    <td>{{i[3]}}</td>
+    <td>{{i[4]}}</td>
+    <td>{{i[5]}}</td>
+    <td>{{i[6]}}</td>
+    <td>{{i[7]}}</td>
+    <td style="text-align: center;">
+      <a  class="btn btn-danger btn-sm" href="{{url_for('hh.hh_member_delete',key=i[0],hh=i[1])}}">Delete</a>
+      <a  class="btn btn-secondary btn-sm" href="{{url_for('hhrpt.rbiformb')}}" target="_blank">FORM B</a>
+    </td>
+  </tr>
+  {%endfor%}
+</tbody>
+</table>
+
+<!-- #table registred VOTERS -->
+
+<h6>REGISTERED VOTERS</h6>
+<table id="tbl_hh" class="table table-bordered table-sm table-hover table-success ">
+<thead class="thead-dark" style="text-align: center;">
+  <tr>
+    <th>FULL NAME</th>
+    <th>PRECINT</th>
+    <th>ADDRESS</th>
+    <th>BARANGAY</th>
+  </tr>
+</thead>
+<tbody>
+  {%for i in v%}
+  <tr>
+    <td>{{i[1]}}</a></td>
+    <td>{{i[2]}}</td>
+    <td>{{i[3]}}</td>
+    <td>{{i[4]}}</td>
+  </tr>
+  {%endfor%}
+</tbody>
+</table>
+<!-- <script>
+  $('#tbl_hh').DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+        'colvis',
+        'excel',
+        'print'
+    ]
+  })
+</script> -->
